@@ -26,7 +26,7 @@ public class UsuarioRepositorio {
     }
     
     public UsuarioModel getUser(String pName){
-        String SQL = "select users.id, users.name ,password_fingerprint.path "
+        String SQL = "select users.id, users.name ,password_fingerprint.path, posicao "
                     +"from users "
                     +"inner join password_fingerprint on users.id = password_fingerprint.user_id "
                     +"where  users.name  = ? " ;
@@ -39,18 +39,20 @@ public class UsuarioRepositorio {
             
             String name = "";
             String path = "";
+            String posicao = "";
             int id = 0;
             
             while(rs.next()){
                 name = rs.getString("name");
                 path = rs.getString("path");            
                 id = Integer.parseInt(rs.getString("id"));
+                posicao = rs.getString("posicao");
             }
             if(id == 0){
                 System.out.println("Usuario nao encotrado no banco de dados");
                 return null;
             }
-            return new UsuarioModel(id, name, path);
+            return new UsuarioModel(id, name, path, posicao);
         } catch (NumberFormatException | SQLException e) {
             System.out.println(e.getMessage());
         }

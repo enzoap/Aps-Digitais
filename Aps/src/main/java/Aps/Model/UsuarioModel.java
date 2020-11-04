@@ -13,14 +13,16 @@ public class UsuarioModel {
     private int Id;
     private String Name;
     private String Password_Fingerprint;
+    private String Posicao;
 
     public UsuarioModel() {
     }
 
-    public UsuarioModel(int Id, String Name, String Password_Fingerprint) {
+    public UsuarioModel(int Id, String Name, String Password_Fingerprint, String posicao) {
         this.Id = Id;
         this.Name = Name;
         this.Password_Fingerprint = Password_Fingerprint;
+        this.Posicao = posicao;
     }
     
     
@@ -46,6 +48,14 @@ public class UsuarioModel {
 
     public void setPassword_Fingerprint(String Password_Fingerprint) {
         this.Password_Fingerprint = Password_Fingerprint;
+    }
+
+    public String getPosicao() {
+        return Posicao;
+    }
+
+    public void setPosicao(String Posicao) {
+        this.Posicao = Posicao;
     }
     
 }
